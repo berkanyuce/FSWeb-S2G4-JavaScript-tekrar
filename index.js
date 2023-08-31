@@ -29,13 +29,14 @@ function KareninAlani(kenaruzunlugu){
 			4. Hesaplanan çemberin çevresi döndürülecektir.
 		*/
 
-function CemberinCevresi(/* kodlar buraya */){
+function CemberinCevresi(yaricap){
 	/* kodlar buraya */
+	return 2 * pi * yaricap;
 }
 
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
-
+//console.log(CemberinCevresi(5));
 
 
 
@@ -47,13 +48,13 @@ function CemberinCevresi(/* kodlar buraya */){
 			4. Hesaplanan çemberin alanı döndürülecektir.
 		*/
 		
-function CemberinAlani(/* kodlar buraya */){
-	/* kodlar buraya */
+function CemberinAlani(yaricap, pi){
+	return Math.pow(yaricap,2) * pi
 }
 
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
-
+//console.log(CemberinAlani(15, pi))
 
 
 /* 	GÖREV 3:
@@ -76,38 +77,65 @@ function CemberinAlani(/* kodlar buraya */){
 	var ucetambolunenler, enkucuk, enbuyuk, ucebolunenlerintoplami, besyuzdenkucuksayilar, siralisayilar, tekraredensayilar;
 	
 	//3a çözümü
-
-	/* kodlar buraya */
-	
-	
+	enkucuk = sayilar[0];
+	enbuyuk = sayilar[0];
+	for(let i = 0; i < sayilar.length; i++){
+		sayilar[i] > enbuyuk ? enbuyuk = sayilar[i] : "";	
+		sayilar[i] < enkucuk ? enkucuk = sayilar[i] : "";	
+	}
+	//console.log(enkucuk)
 	
 	// 3b çözümü:
+	ucetambolunenler = [];
+	sayilar.forEach(sayi => {
+		sayi % 3 == 0 ? ucetambolunenler.push(sayi) : ""	
+	});
+	//console.log(ucetambolunenler)
 
-	/* kodlar buraya */
-		
-		
-		
 	//3c çözümü:
-	
-	/* kodlar buraya */
+	ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => {
+		return toplam + sayi;
+	  }, 0);
+	//console.log(ucebolunenlerintoplami)
 
-	
-	
 	//3d çözümü
-	
-	/* kodlar buraya */
-
-
+	besyuzdenkucuksayilar = []
+	besyuzdenkucuksayilar = sayilar.filter(function(number) {
+		return number < 500;
+	});
+	//console.log(besyuzdenkucuksayilar)
 
 	//3e çözümü
-
-	/* kodlar buraya */
+	siralisayilar = besyuzdenkucuksayilar.sort(function(a, b){return a - b});
+	//console.log(siralisayilar)
 	
 	
 	//3f çözümü
 	
 	/* kodlar buraya */
+	tekraredensayilar = []
+	var sayac = {}; // Her sayının tekrar sayısını tutacak bir nesne oluşturuyoruz.
 
+	
+	var tekrarSayilari = {}; // Her sayının tekrar sayısını saklayacak bir nesne oluşturun.
+    
+    // Diziyi dönerek her sayının tekrar sayısını hesaplayın.
+    for (var i = 0; i < sayilar.length; i++) {
+        var sayi = sayilar[i];
+        if (tekrarSayilari[sayi]) {
+            tekrarSayilari[sayi]++; // Sayı daha önce görülmüşse bir arttırın.
+        } else {
+            tekrarSayilari[sayi] = 1; // Sayı ilk defa görülüyorsa 1 olarak başlatın.
+        }
+    }
+	console.log(tekrarSayilari)
+
+	for (let anahtar in tekrarSayilari) {
+		let deger = tekrarSayilari[anahtar];
+		if (deger > 1)
+			tekraredensayilar.push(`${anahtar} sayısı ${deger} kere tekrar edilmiştir`)
+	}
+	console.log(tekraredensayilar);
 
 
 
